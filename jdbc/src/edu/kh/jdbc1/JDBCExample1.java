@@ -62,6 +62,8 @@ public class JDBCExample1 {
 			
 			String user = "kh_lmk"; // 사용자계정
 			String pw = "kh1234"; // 비밀번호
+			/// ▶ 단점: 보안상의 문제가 있음...! 개인정보가 들어간 데이터를 넣기때문..!
+			
 			
 			//DriverManager에 전달!
 			//DriverManager ? 메모리에 로드된 JDBC 드라이버를 이용해서

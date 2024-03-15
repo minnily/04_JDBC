@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>query</comment>
+	
+	<entry key="insert">
+		INSERT INTO TB_EMPLOYEE
+		VALUES(?,?,?,?,?,?,?,?)  	
+	</entry>
+	
+	
+	<entry key ="update">
+		UPDATE TB_EMPLOYEE SET
+		EMP_ID = ?,
+		EMP_NAME = ?,
+		EMP_NO = ?,
+		EMAIL = ?,
+		PHONE = ?,
+		DEPARTEMET_TITLE = ?,
+		JOB_NAME = ?,
+		SALARY = ?
+		
+		
+	</entry>
+	
+	<entry key ="delete">
+		DELETE TB_EMPLOYEE 
+		WHERE EMP_ID = ?
+	</entry>
+</properties>
