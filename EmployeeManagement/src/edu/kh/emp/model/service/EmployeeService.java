@@ -164,7 +164,7 @@ public class EmployeeService {
 	}
 
 	/**직급별 급여 평균 조회
-	 * @return
+	 * @return empMap
 	 * @throws Exception
 	 */
 	public Map<String, Double> selectJobAvgSalary()throws Exception{
