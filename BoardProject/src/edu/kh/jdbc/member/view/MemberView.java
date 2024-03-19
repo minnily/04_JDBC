@@ -46,7 +46,7 @@ public class MemberView {
 				case 2 : selectMemberList(); break;
 				case 3 : updateMember(); break;
 				case 4 : updatePassword(); break;
-				case 5 : // if( unRegisterMenu() ) return; break;
+				case 5 : if( unRegisterMenu() ) return; break;
 				case 9 : System.out.println("\n======= 메인 메뉴로 돌아갑니다 ======\n"); break;
 				case 0 : 
 					System.out.println("\u001B[31m"+"\n ===============프로그램 종료=============== \n"+"\u001B[30m");
@@ -186,7 +186,6 @@ public class MemberView {
 			// 아닐때 
 			System.out.println("\n***** 새 비밀번호가 일치하지 않습니다 *****\n");
 			
-			
 		}
 		
 		try {
@@ -205,4 +204,67 @@ public class MemberView {
 		}
 		
 	}
+	
+	/** 회원 탈퇴
+	 * @return ture/false
+	 */
+	public boolean unRegisterMenu() {
+		
+		System.out.println("\n======= 회원 탈퇴 =========\n");
+		
+		System.out.print("현재 비밀번호 : ");
+		String memberPw=sc.next();
+		
+		String code = service.createSecurityCode();
+		System.out.printf("보안 문자 입력 [%s] : ", code); // 보안문자 입력[240571]
+		String input = sc.next();//보안문자 입력
+		
+		// 보안문자 일치여부 확인
+		if(!input.equals(code)) { //일치하지 않으면
+			System.out.println("\n***** 보안 문자가 일치하지 않습니다 ******\n");
+			return false;
+		}
+		
+		while(true) {
+			System.out.println("정말 탈퇴 하시겠습니까?(Y/N) : ");
+			char check = sc.next().toUpperCase().charAt(0);
+			
+			if(check == 'N') {
+				System.out.println("\n======탈퇴 취소======\n");
+				return false; // 해당 메서드 종료하고 호출한 쪽으로 false를 보내주기
+			}
+			
+			if(check == 'Y') {
+				break; // 해당 반복문 종료
+				
+			}
+			
+			// 'Y'/ 'N'이 아닌 경우
+			System.out.println("\n**** 잘못 입력 하셨습니다 ****\n");
+		}
+		
+		try {
+			// 회원 탈퇴 서비스 호출 
+			int result = service.unRegisterMember(memberPw,Session.loginMember.getMemberNo());
+			
+			if(result > 0) {
+				System.out.println("\n=== 탈퇴 되었습니다 ===\n");
+			
+			//로그아웃 처리하기
+			
+			Session.loginMember =null;
+			
+			return true;
+			
+			}else {
+			System.out.println("\n현재 비밀번호가 일치하지 않습니다.");
+			}
+		
+		}catch (Exception e) {
+			System.out.println("\n****** 회원 탈퇴 중 예외 발생 ******\n");
+			e.printStackTrace();
+		}
+	return false;
+	}
+	
 }

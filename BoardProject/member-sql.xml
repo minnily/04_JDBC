@@ -26,4 +26,11 @@ ORDER BY MEMBER_NO DESC
 	WHERE MEMBER_PW = ?
 	AND MEMBER_NO = ?
 </entry>
+
+<entry key="unRegisterMember">
+	UPDATE "MEMBER" SET
+	UNREGISTER_FL = 'Y'
+	WHERE MEMBER_NO = ?
+	AND MEMBER_PW = ?
+</entry>
 </properties>
