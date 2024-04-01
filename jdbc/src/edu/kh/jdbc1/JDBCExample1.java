@@ -34,7 +34,7 @@ public class JDBCExample1 {
 		
 		
 		ResultSet rs = null;
-		// SELECT 질의 성공 시 반환되는데
+		// SELECT 절의 성공 시 반환되는데
 		// 조회 결과 집합을 나타내는 객체
 		
 		

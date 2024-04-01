@@ -127,7 +127,7 @@ public class BoardDAO {
 	}
 
 	/** 조회수 증가 SQL 수행 DAO
-	 * @param conn2
+	 * @param conn
 	 * @param input
 	 * @return result
 	 */
@@ -152,7 +152,7 @@ public class BoardDAO {
 	}
 
 	/** 게시글 수정 SQL 수행
-	 * @param conn2
+	 * @param conn
 	 * @param boardTitle
 	 * @param boardContent
 	 * @param boardNo
